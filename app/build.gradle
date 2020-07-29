@@ -47,5 +47,5 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
 
-    implementation 'com.github.frekisSDK:android-sdk:1.0.8'
+    implementation 'com.github.frekisSDK:android-sdk:1.0.13'
 }
