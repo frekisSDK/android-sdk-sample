@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:text="Status"
+            android:textSize="@dimen/_14ssp" />
+
+        <TextView
+            android:id="@+id/txt_status"
+            style="@style/TextViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/proxima_nova_semi_bold"
+            android:maxLines="3"
+            android:padding="@dimen/_10sdp"
+            android:text="Disconnected"
+            android:textSize="@dimen/_14ssp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/light_grey" />
+
+    <com.google.android.material.progressindicator.ProgressIndicator
+        android:id="@+id/progressIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:indicatorColor="@color/colorAccent" />
+
+
+    <LinearLayout
+        android:id="@+id/layout_token"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_12sdp"
+        android:visibility="visible">
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/proxima_nova_semi_bold"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/secret_token"
+            android:textSize="@dimen/_14ssp" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_minus8sdp"
+            android:padding="@dimen/_5sdp"
+            app:boxBackgroundMode="outline"
+            app:hintEnabled="false">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_token"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:fontFamily="@font/proxima_nova_regular"
+                android:hint="@string/enter_your_token"
+                android:padding="@dimen/_8sdp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_init"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:fontFamily="@font/proxima_nova_bold"
+                android:minWidth="@dimen/_100sdp"
+                android:minHeight="@dimen/_40sdp"
+                android:onClick="onClick"
+                android:text="@string/init_sdk" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/light_grey" />
+
+    <LinearLayout
+        android:id="@+id/layout_scan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_12sdp"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/proxima_nova_semi_bold"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/scan_and_connect"
+            android:textSize="@dimen/_14ssp" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_minus8sdp"
+            android:padding="@dimen/_5sdp"
+            app:boxBackgroundMode="outline"
+            app:hintEnabled="false">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_id"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:fontFamily="@font/proxima_nova_regular"
+                android:hint="@string/lock_id"
+                android:letterSpacing="0.2"
+                android:padding="@dimen/_8sdp"
+                android:text="" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_unlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:fontFamily="@font/proxima_nova_bold"
+                android:minWidth="@dimen/_100sdp"
+                android:minHeight="@dimen/_40sdp"
+                android:onClick="onClick"
+                android:text="@string/unlock"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_connect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:fontFamily="@font/proxima_nova_bold"
+                android:minWidth="@dimen/_100sdp"
+                android:minHeight="@dimen/_40sdp"
+                android:onClick="onClick"
+                android:text="@string/connect" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

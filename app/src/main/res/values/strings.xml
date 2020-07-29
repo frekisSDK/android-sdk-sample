@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Frekis SDK Sample</string>
+    <string name="connect">Connect</string>
+    <string name="lock">Lock</string>
+    <string name="unlock">Unlock</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="session_connected">Session Connected</string>
+    <string name="scan_and_connect">Scan and Connect</string>
+    <string name="init_sdk">Init SDK</string>
+    <string name="enter_your_token">Enter your token</string>
+    <string name="secret_token">Secret Token</string>
+    <string name="lock_id">Lock ID</string>
+</resources>

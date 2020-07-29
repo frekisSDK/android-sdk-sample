@@ -1,0 +1,44 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="TextInputLayoutStyle" parent="Widget.Design.TextInputLayout">
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/light_grey</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="hintTextAppearance">@style/InputLayoutHintAppearance</item>
+    </style>
+
+    <style name="InputLayoutHintAppearance" parent="TextAppearance.Design.Hint">
+        <item name="android:fontFamily">@font/proxima_nova_semi_bold</item>
+        <item name="android:textColor">@color/primary_text_black</item>
+    </style>
+
+    <style name="TextViewStyle">
+        <item name="android:textColor">@color/primary_text_black</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColorHint">@color/secondary_text_black</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:drawableTint" tools:ignore="NewApi">@color/primary_text_black</item>
+        <item name="android:fontFamily">@font/proxima_nova_regular</item>
+    </style>
+
+    <style name="EditTextStyle">
+        <item name="android:textColor">@color/primary_text_black</item>
+        <item name="android:textColorHint">@color/secondary_text_black</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:drawableTint" tools:targetApi="m">@color/primary_text_black</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:fontFamily">@font/proxima_nova_semi_bold</item>
+    </style>
+
+</resources>
