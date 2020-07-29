@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final int REQUEST_CODE_PERMISSION = 101;
 
-    private static final String API_SECRET_KEY = "04297873-8a96-4cf8-ad38-1ec8ba0ed9c3";
+    //    private static final String API_SECRET_KEY = "04297873-8a96-4cf8-ad38-1ec8ba0ed9c3";
+    private static final String API_SECRET_KEY = "cf23b888-14c9-4bd3-a6ef-fcd84d77440f";
 
     private static final String[] PERMISSIONS = {
             Manifest.permission.BLUETOOTH,
@@ -50,6 +51,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mapping();
+
+        edt_token.setText(API_SECRET_KEY);
+        edt_id.setText("07873CA3089E277D");
     }
 
     private void mapping() {
@@ -62,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         progressIndicator = findViewById(R.id.progressIndicator);
         layout_scan = findViewById(R.id.layout_scan);
         layout_token = findViewById(R.id.layout_token);
+
     }
 
 
@@ -197,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBleConnectionError(int code, String error) {
-        btn_connect.setEnabled(false);
+        btn_connect.setEnabled(true);
         is_connected = false;
         txt_status.setText(error);
         progressIndicator.setVisibility(View.GONE);
