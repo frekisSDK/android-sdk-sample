@@ -1,0 +1,123 @@
+{
+  "project_info": {
+    "project_number": "193242292912",
+    "firebase_url": "https://frekis-84dd8.firebaseio.com",
+    "project_id": "frekis-84dd8",
+    "storage_bucket": "frekis-84dd8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193242292912:android:1355d62985eceb23ff9175",
+        "android_client_info": {
+          "package_name": "com.frekis.sdk.sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193242292912-cb5q16c266mcquolbrk2udq7io9pnaju.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.frekis.sdk.sample",
+            "certificate_hash": "658e617e76bc8a6a36b5298ea775855b32e4e001"
+          }
+        },
+        {
+          "client_id": "193242292912-qsqradicbv40h3tvn26ll8pa90pcg6ll.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.frekis.sdk.sample",
+            "certificate_hash": "e377bbab0151db1463f57a348316e88e74140dac"
+          }
+        },
+        {
+          "client_id": "193242292912-v4kvhgtl5gld5ecpp07u8oargqbmcjg4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHtG9RpoHMFXeWBz3iIVJ8cEQlNTKImF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193242292912-v4kvhgtl5gld5ecpp07u8oargqbmcjg4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "193242292912-qm6er034q94lq10d4b5sotmdi1kg7279.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.frekis"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193242292912:android:ed22a4ae83f093b8ff9175",
+        "android_client_info": {
+          "package_name": "com.sellnu.frekis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193242292912-mk16lh8mu8f42g9f50180f3cunpm5s25.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sellnu.frekis",
+            "certificate_hash": "17a70c852b7fea1cd440707a7a8b418bdb1a16f5"
+          }
+        },
+        {
+          "client_id": "193242292912-mraql6m1jfhgkklv1acjusq62gbv6opu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sellnu.frekis",
+            "certificate_hash": "0b4b33aa3c496e3e345e7c0fdbd96d5155b84093"
+          }
+        },
+        {
+          "client_id": "193242292912-omikhave1hfrgd65aq0lo2c9jh54ju12.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sellnu.frekis",
+            "certificate_hash": "e377bbab0151db1463f57a348316e88e74140dac"
+          }
+        },
+        {
+          "client_id": "193242292912-v4kvhgtl5gld5ecpp07u8oargqbmcjg4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHtG9RpoHMFXeWBz3iIVJ8cEQlNTKImF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193242292912-v4kvhgtl5gld5ecpp07u8oargqbmcjg4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "193242292912-qm6er034q94lq10d4b5sotmdi1kg7279.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.frekis"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

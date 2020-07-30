@@ -13,7 +13,7 @@ Frekis sdk latest version is available on JitPackAdd below link in Project Level
 Include Frekis SDK dependency in to your app build.gradle file
 ```bash
     dependencies {
-        implementation 'com.github.frekisSDK:android-sdk:1.0.13'
+        implementation 'com.github.frekisSDK:android-sdk:1.0.15'
     }
 ```
 

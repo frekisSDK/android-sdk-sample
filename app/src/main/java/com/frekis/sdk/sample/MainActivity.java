@@ -52,11 +52,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         mapping();
 
-//        edt_token.setText(API_SECRET_KEY);
-//        edt_id.setText("07873CA3089E277D");
+        edt_token.setText(API_SECRET_KEY);
+        edt_id.setText("07873CA3089E277D");
 
-        edt_token.setText("409546af-9411-438a-90eb-8c1601c2a078");
-        edt_id.setText("0787F8300244320D");
+//        edt_token.setText("409546af-9411-438a-90eb-8c1601c2a078");
+//        edt_id.setText("0787F8300244320D");
     }
 
     private void mapping() {
