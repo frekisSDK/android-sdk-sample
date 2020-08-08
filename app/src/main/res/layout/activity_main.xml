@@ -7,12 +7,11 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_12sdp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="@dimen/_12sdp">
 
         <TextView
             style="@style/TextViewStyle"
@@ -29,9 +28,38 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/proxima_nova_semi_bold"
-            android:maxLines="3"
             android:padding="@dimen/_10sdp"
             android:text="Disconnected"
+            android:textSize="@dimen/_14ssp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_minus20sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/_12sdp"
+        android:paddingEnd="@dimen/_12sdp"
+        android:visibility="visible">
+
+        <TextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:text="Detail"
+            android:textSize="@dimen/_14ssp" />
+
+        <TextView
+            android:id="@+id/txt_detail"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/proxima_nova_semi_bold"
+            android:padding="@dimen/_10sdp"
+            android:text="Asset not found."
             android:textSize="@dimen/_14ssp" />
     </LinearLayout>
 
@@ -64,7 +92,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/proxima_nova_semi_bold"
             android:padding="@dimen/_10sdp"
-            android:text="@string/secret_token"
+            android:text="Secret Token"
             android:textSize="@dimen/_14ssp" />
 
 
@@ -84,8 +112,9 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:fontFamily="@font/proxima_nova_regular"
-                android:hint="@string/enter_your_token"
-                android:padding="@dimen/_8sdp" />
+                android:hint="Enter your token"
+                android:padding="@dimen/_8sdp"
+                android:text="04297873-8a96-4cf8-ad38-1ec8ba0ed9c3" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -106,7 +135,8 @@
                 android:minWidth="@dimen/_100sdp"
                 android:minHeight="@dimen/_40sdp"
                 android:onClick="onClick"
-                android:text="@string/init_sdk" />
+                android:text="Initialize"
+                android:textSize="@dimen/_10ssp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -130,7 +160,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/proxima_nova_semi_bold"
             android:padding="@dimen/_10sdp"
-            android:text="@string/scan_and_connect"
+            android:text="Scan and Connect"
             android:textSize="@dimen/_14ssp" />
 
 
@@ -150,10 +180,10 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:fontFamily="@font/proxima_nova_regular"
-                android:hint="@string/lock_id"
+                android:hint="Lock ID"
                 android:letterSpacing="0.2"
                 android:padding="@dimen/_8sdp"
-                android:text="" />
+                android:text="07873CA3089E277D" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -165,16 +195,29 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_alarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/_1sdp"
+                android:fontFamily="@font/proxima_nova_bold"
+                android:minHeight="@dimen/_40sdp"
+                android:onClick="onClick"
+                android:text="Enable Alert"
+                android:textSize="@dimen/_10ssp"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_unlock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginEnd="@dimen/_2sdp"
+                android:layout_marginEnd="@dimen/_1sdp"
                 android:fontFamily="@font/proxima_nova_bold"
-                android:minWidth="@dimen/_100sdp"
                 android:minHeight="@dimen/_40sdp"
                 android:onClick="onClick"
-                android:text="@string/unlock"
+                android:text="Unlock"
+                android:textSize="@dimen/_10ssp"
                 android:visibility="gone" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -182,14 +225,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_1sdp"
                 android:fontFamily="@font/proxima_nova_bold"
-                android:minWidth="@dimen/_100sdp"
                 android:minHeight="@dimen/_40sdp"
                 android:onClick="onClick"
-                android:text="@string/connect" />
-
+                android:text="Connect"
+                android:textSize="@dimen/_10ssp" />
         </LinearLayout>
     </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/light_grey" />
 
 </LinearLayout>

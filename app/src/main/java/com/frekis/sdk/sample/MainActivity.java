@@ -7,14 +7,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.frekis.sdk.Frekis;
 import com.frekis.sdk.listener.BleListener;
+import com.frekis.sdk.listener.BleStatusListener;
 import com.frekis.sdk.listener.ResponseListener;
 import com.frekis.sdk.listener.SessionConnectionListener;
+import com.frekis.sdk.model.lock.Asset;
 import com.frekis.sdk.model.ride.LatLng;
 import com.google.android.material.progressindicator.ProgressIndicator;
 
@@ -25,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final int REQUEST_CODE_PERMISSION = 101;
 
-    private static final String API_SECRET_KEY = "YOUR_API_TOKEN";
+//    private static final String API_SECRET_KEY = "0a02a1ed-b9ce-4500-aec4-7a48db13eba3";
 
     private static final String[] PERMISSIONS = {
             Manifest.permission.BLUETOOTH,
@@ -35,15 +38,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     };
 
     private Frekis frekis;
-    private TextView txt_status;
+    private TextView txt_status, txt_detail;
     private EditText edt_id, edt_token;
-    private Button btn_connect, btn_unlock, btn_init;
+    private Button btn_init, btn_connect, btn_unlock, btn_alarm;
     private ProgressIndicator progressIndicator;
     private LinearLayout layout_scan, layout_token;
 
     private boolean is_connected = false;
     private boolean is_unlocked = false;
-
+    private boolean is_alarm_enable = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,17 +54,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         mapping();
 
-        edt_token.setText(API_SECRET_KEY);
+        edt_token.setText("Your API token here");
         edt_id.setText("07873CA3089E277D");
     }
 
     private void mapping() {
         txt_status = findViewById(R.id.txt_status);
+        txt_detail = findViewById(R.id.txt_detail);
         edt_token = findViewById(R.id.edt_token);
         edt_id = findViewById(R.id.edt_id);
         btn_init = findViewById(R.id.btn_init);
         btn_connect = findViewById(R.id.btn_connect);
         btn_unlock = findViewById(R.id.btn_unlock);
+        btn_alarm = findViewById(R.id.btn_alarm);
         progressIndicator = findViewById(R.id.progressIndicator);
         layout_scan = findViewById(R.id.layout_scan);
         layout_token = findViewById(R.id.layout_token);
@@ -89,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        String lock_id = edt_id.getText().toString().trim();
         switch (view.getId()) {
             case R.id.btn_init:
                 if (edt_token.getText().toString().trim().isEmpty()) {
@@ -105,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 frekis.init(edt_token.getText().toString().trim());
                 break;
             case R.id.btn_connect:
-                if (edt_id.getText().toString().trim().isEmpty()) {
+                if (lock_id.isEmpty()) {
                     edt_id.setError("Please enter lock id");
                     return;
                 }
@@ -115,11 +121,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else connect();
                 break;
             case R.id.btn_unlock:
-
                 LatLng latLng = new LatLng(23.0969506, 72.5849778);
                 if (is_unlocked) {
                     progressIndicator.setVisibility(View.VISIBLE);
-                    frekis.lock(edt_id.getText().toString(), latLng, new ResponseListener() {
+                    frekis.lock(lock_id, latLng, new ResponseListener() {
                         @Override
                         public void onSuccess() {
                             is_unlocked = false;
@@ -138,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
 
                 progressIndicator.setVisibility(View.VISIBLE);
-                frekis.unlock(edt_id.getText().toString(), latLng, new ResponseListener() {
+                frekis.unlock(lock_id, latLng, new ResponseListener() {
                     @Override
                     public void onSuccess() {
                         is_unlocked = true;
@@ -151,6 +156,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onError(int code, String error) {
                         txt_status.setText(error);
                         progressIndicator.setVisibility(View.GONE);
+                    }
+                });
+                break;
+            case R.id.btn_alarm:
+                if (lock_id.isEmpty()) {
+                    edt_id.setError("Please enter lock id");
+                    return;
+                }
+
+                if (!is_connected) return;
+                frekis.setVibration(lock_id, !is_alarm_enable, new BleStatusListener() {
+                    @Override
+                    public void onBleStatusUpdateSuccess(Asset asset) {
+                        if (asset == null) return;
+                        if (is_alarm_enable == asset.isVibrationEnabled()) {
+                            toast("Unable to update the alarm");
+                        }
+                        is_alarm_enable = asset.isVibrationEnabled();
+                        btn_alarm.setText(is_alarm_enable ? "Disable Alarm" : "Enable Alarm");
+                    }
+
+                    @Override
+                    public void onBleStatusUpdateError(int code, String message) {
+                        toast(message);
                     }
                 });
                 break;
@@ -169,7 +198,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_unlock.setVisibility(View.GONE);
         btn_connect.setEnabled(true);
         btn_connect.setText(R.string.connect);
-        is_connected = false;
     }
 
     private boolean hasPermission() {
@@ -185,8 +213,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onBleStatusUpdate(String status) {
+    public void onBleUpdate(String status, Asset asset) {
         txt_status.setText(status);
+        if (asset == null) {
+            is_alarm_enable = false;
+            btn_alarm.setVisibility(View.GONE);
+            txt_detail.setText("Asset detail not found");
+        } else {
+            is_alarm_enable = asset.isVibrationEnabled();
+            btn_alarm.setText(is_alarm_enable ? "Disable Alarm" : "Enable Alarm");
+            btn_alarm.setVisibility(View.VISIBLE);
+            txt_detail.setText(asset.toString());
+        }
     }
 
     @Override
@@ -196,6 +234,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_unlock.setVisibility(View.VISIBLE);
         progressIndicator.setVisibility(View.GONE);
         btn_connect.setEnabled(true);
+        btn_alarm.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -204,5 +243,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         is_connected = false;
         txt_status.setText(error);
         progressIndicator.setVisibility(View.GONE);
+        btn_alarm.setVisibility(View.GONE);
+    }
+
+    public void toast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

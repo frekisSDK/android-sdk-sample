@@ -13,7 +13,7 @@ Frekis sdk latest version is available on JitPackAdd below link in Project Level
 Include Frekis SDK dependency in to your app build.gradle file
 ```bash
     dependencies {
-        implementation 'com.github.frekisSDK:android-sdk:1.0.16'
+        implementation 'com.github.frekisSDK:android-sdk:2.0.0'
     }
 ```
 
@@ -48,7 +48,7 @@ public interface SessionConnectionListener {
 ```java
 public interface BleListener {
 
-  void onBleStatusUpdate(String status);
+  void onBleUpdate(String status, Asset asset);
 
   void onBleConnected();
 
@@ -56,11 +56,33 @@ public interface BleListener {
 }
 ```
 
-**Unlock** and **lock** the asset - Make sure the frekis sdk is connected and asset is connected before calling this method.
-
-Note, Client has to manually detect the status of lock and call this method once user is manually locking the device.
+**BleStatusListener** is for status update with ble devices, In Frekis they are know for asset.
+** Asset** class object has all the defined value for particular asset.
 ```java
+public interface BleListener {
+
+    void onBleStatusUpdateSuccess(Asset asset);
+
+    void onBleStatusUpdateError(int code, String message);
+}
+```
+
+**Other helpful methods** the asset - Make sure the frekis sdk is connected and asset is connected before calling this method.
+Note, Client has to manually detect the status of lock and call frekis.lockAsset() method once user is manually locking the device.
+```java
+//Connect
+frekis.connect(lock_id)
+
+// Asset Info
+frekis.getInfo(lock_id);
+
+//Unlock
 frekis.unlockAsset(lock_id, location, listener);
 
+//Lock
 frekis.lockAsset(lock_id, location, listener);
+
+//Disconnect
+frekis.disconnect(lock_id)
 ```
+
