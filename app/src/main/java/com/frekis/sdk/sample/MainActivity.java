@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final int REQUEST_CODE_PERMISSION = 101;
 
-//    private static final String API_SECRET_KEY = "0a02a1ed-b9ce-4500-aec4-7a48db13eba3";
+    private static final String API_SECRET_KEY = "0a02a1ed-b9ce-4500-aec4-7a48db13eba3";
 
     private static final String[] PERMISSIONS = {
             Manifest.permission.BLUETOOTH,
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         mapping();
 
-        edt_token.setText("Your API token here");
+        edt_token.setText(API_SECRET_KEY);
         edt_id.setText("07873CA3089E277D");
     }
 
