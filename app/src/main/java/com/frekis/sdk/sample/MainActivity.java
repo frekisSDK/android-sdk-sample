@@ -212,6 +212,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         EasyPermissions.onRequestPermissionsResult(REQUEST_CODE_PERMISSION, permissions, grantResults, this);
     }
 
+    private Asset asset;
+
     @Override
     public void onBleUpdate(String status, Asset asset) {
         txt_status.setText(status);
@@ -224,7 +226,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             btn_alarm.setText(is_alarm_enable ? "Disable Alarm" : "Enable Alarm");
             btn_alarm.setVisibility(View.VISIBLE);
             txt_detail.setText(asset.toString());
+
+            if (this.asset == null) {
+                is_unlocked = !asset.isLocked();
+                btn_unlock.setText(is_unlocked ? R.string.lock : R.string.unlock);
+            }
         }
+        this.asset = asset;
     }
 
     @Override
